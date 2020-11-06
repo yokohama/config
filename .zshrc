@@ -1,10 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="candy"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
 
 plugins=(git ruby osx bundler brew rails emoji-clock)
 
@@ -22,10 +19,6 @@ eval "$(rbenv init - zsh)"
 
 # Android SDK
 export ANDROID_HOME=$HOME/Library/Android/sdk
-
-#jEnv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 # golang
 export GOPATH=$HOME/go
@@ -74,20 +67,32 @@ alias hrs="heroku run rails s"
 alias hrdm="heroku run rake db:migrate VERSION=0; heroku run rake db:migrate"
 alias ns='npm start'
 
-alias vi="/usr/local/bin/vim"
+alias vi=$CUSTOM_VIM_PATH
 alias pwgen='openssl rand -base64 15'
 alias yokohama='ssh yokohama-develop'
 
+if [ $CUSTOM_PLATFORM=ec2 ]; then
+  alias sr1='screen -r screen1'
+  alias sr2='screen -r screen2'
+  alias sr3='screen -r screen3'
+  alias sd1='screen -d screen1'
+  alias sd2='screen -d screen2'
+  alias sd3='screen -d screen3'
+  alias sls='screen -ls'
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$($HOME/opt/anaconda3/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$($CUSTOM_ANACONDA_PATH 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
+    export PATH=$CUSTOM_ANACONDA_PATH/bin:$PATH
 else
-    if [ -f $HOME"/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . $HOME"/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f $CUSTOM_ANACONDA_PATH/etc/profile.d/conda.sh ]; then
+        . $CUSTOM_ANACONDA_PATH/etc/profile.d/conda.sh
+        export PATH=$CUSTOM_ANACONDA_PATH/bin:$PATH
     else
-        export PATH=$HOME"/opt/anaconda3/bin:$PATH"
+        export PATH=$CUSTOM_ANACONDA_PATH/opt/anaconda3/bin:$PATH
    fi
 fi
 unset __conda_setup
