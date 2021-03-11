@@ -1,6 +1,3 @@
-"" -------------------------------
-"" Vundle.vim
-"" -------------------------------
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,15 +19,16 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'miyakogi/seiya.vim'
 Plugin 'posva/vim-vue'
 Plugin 'tpope/vim-fugitive'
+Plugin 'w0rp/ale'
  
 call vundle#end()
-"filetype plugin indent on
-"--- Vundle.vim ここまで
+"" filetype plugin indent on
+"" Vundle.vim ここまで
 
 "" --------------------------------
 "" 基本設定
 "" --------------------------------
-"set clipboard=unnamed,autoselect
+"" set clipboard=unnamed,autoselect
 vnoremap <C-y> "+y
 set colorcolumn=80
 
@@ -55,33 +53,33 @@ set tabstop=2 shiftwidth=2 expandtab
 set cursorline
 set cursorcolumn
 
-""----------------------------------------
+"" ----------------------------------------
 "" color
-""----------------------------------------
+"" ----------------------------------------
 colorscheme jellybeans
 let g:seiya_auto_enable=1
 
-""----------------------------------------
+"" ----------------------------------------
 "" vim-indent-guides
-""----------------------------------------
+"" ----------------------------------------
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors=0
 let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-""----------------------------------------
+"" ----------------------------------------
 "" NERDtree(ファイラー)
-""----------------------------------------
-nnoremap <silent><C-t> :NERDTreeToggle<CR>
+"" ----------------------------------------
+"" nnoremap <silent><C-t> :NERDTreeToggle<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
 
 let &t_SI = "\e]50;CursorShape=1\x7"
 let &t_EI = "\e]50;CursorShape=0\x7"
 
-""----------------------------------------
+"" ----------------------------------------
 "" neocomplcache(自動補完)
-""----------------------------------------
+"" ----------------------------------------
 " 起動時に有効
 let g:acp_enableAtStartup = 0
 " 自動補完を行う入力数を設定。初期値は2
@@ -137,6 +135,17 @@ if has("autocmd")
   autocmd FileType md          setlocal sw=2 sts=2 ts=2 et
 endif
 
+let g:ale_linters = {
+            \   'template.yml': ['cfn-lint'],
+            \}
+augroup cfn-template
+    autocmd!
+    autocmd BufRead,BufNewFile *.template.yml,*template.yaml set ft=cloudformation.yaml
+augroup end
+let g:ale_lint_on_enter = 0       " 起動時に非同期での実行をOFF
+let g:ale_set_quickfix = 1        " Quickfixリストを使用する
+nmap <silent>, <plug>(ale_toggle) " ALEのON/OFF切替を「,」キーにマッピング
+
 ""----------------------------------------
 "" scrooloose/syntastic(シンタックスチェック)
 ""----------------------------------------
@@ -156,4 +165,22 @@ let g:syntastic_check_on_wq = 0
 nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
 " 自動で折りたたまないようにする
 let g:vim_markdown_folding_disabled=1
-let g:previm_enable_realtime = 1
+let g:pvim_enable_realtime = 1
+
+""----------------------------------------
+"" window分割移動
+""----------------------------------------
+noremap <c-h> <c-w><c-h>
+noremap <c-j> <c-w><c-j>
+noremap <c-k> <c-w><c-k>
+noremap <c-l> <c-w><c-l>
+
+""----------------------------------------
+"" 自分ショートカット
+""----------------------------------------
+let mapleader = "\<space>"
+noremap <leader>n :NERDTreeToggle<cr>
+noremap <leader>gs :Gstatus<cr>
+
+"" 折りたたみ
+"set foldmethod=manual
