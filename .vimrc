@@ -20,6 +20,9 @@ Plugin 'miyakogi/seiya.vim'
 Plugin 'posva/vim-vue'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
+Plugin 'yuezk/vim-js'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'leafgarland/typescript-vim'
  
 call vundle#end()
 "" filetype plugin indent on
