@@ -4,9 +4,6 @@ export LANG=en_US.UTF-8
 #ZSH_THEME="candy"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
-#POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
-#POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="green"
-#POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="white"
 
 POWERLEVEL9K_CONTEXT_TEMPLATE='%n'
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='white'
@@ -20,10 +17,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
 
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context battery dir vcs)
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context battery dir vcs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time dir_writable ip custom_wifi_signal background_jobs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ip)
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
@@ -46,9 +40,7 @@ POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=false
 POWERLEVEL9K_OS_ICON_FOREGROUND='black'
 POWERLEVEL9K_OS_ICON_BACKGROUND='202'
-#POWERLEVEL9K_CONTEXT_BACKGROUND='202'
 
-#plugins=(git zsh-syntax-highlighting zsh-completions)
 plugins=(git)
 
 autoload -U compinit && compinit -u
@@ -142,3 +134,7 @@ unset __conda_setup
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init - zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
