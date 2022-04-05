@@ -23,6 +23,7 @@ Plugin 'w0rp/ale'
 Plugin 'yuezk/vim-js'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
  
 call vundle#end()
 "" filetype plugin indent on

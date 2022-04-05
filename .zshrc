@@ -52,11 +52,8 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="/usr/local/Cellar/openssl@1.1/1.1.1g/bin/:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/Cellar/mysql@5.7/5.7.29/bin:$PATH"
-export PATH="$HOME/node_modules/.bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-
-# Node
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$PATH:./node_modules/.bin
 
 # Ruby
 eval "$(rbenv init - zsh)"
@@ -132,9 +129,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init - zsh)"
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
