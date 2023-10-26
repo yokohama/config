@@ -25,7 +25,7 @@
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    context                 # user@host
+    context                   # user@host
     os_icon                   # os identifier
     dir                       # current directory
     vcs                       # git status
@@ -40,8 +40,8 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     command_execution_time    # previous command duration
-    virtualenv                # python virtual environment
-    # context                 # user@host
+    rbenv                     # rbenv
+    pyenv                     # pyenv
     time                      # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
@@ -50,9 +50,20 @@
   # @see https://www.nerdfonts.com/cheat-sheet
   # @execute command. you can check color palette.
   # $ for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
-  #typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ufa47'
   typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue73a'
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
+
+  # pyenv
+  typeset -g POWERLEVEL9K_PYENV_FOREGROUND=37
+  typeset -g POWERLEVEL9K_PYENV_SOURCES=(shell local global)
+  typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=true
+  typeset -g POWERLEVEL9K_PYENV_CONTENT_EXPANSION=%B$'\ue73c''(${P9K_CONTENT}${${P9K_PYENV_PYTHON_VERSION:#$P9K_CONTENT}:+ $P9K_PYENV_PYTHON_VERSION})'
+
+  # rbenv
+  typeset -g POWERLEVEL9K_RBENV_FOREGROUND=124
+  typeset -g POWERLEVEL9K_RBENV_SOURCES=(shell local global)
+  typeset -g POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=true
+  typeset -g POWERLEVEL9K_RBENV_CONTENT_EXPANSION=%B$'\ue739''(${P9K_CONTENT}${${P9K_RBENV_RUBY_VERSION:#$P9K_CONTENT}:+ $P9K_RBENV_RUBY_VERSION})'
 
   # Basic style options that define the overall prompt look.
   typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
