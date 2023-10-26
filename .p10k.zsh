@@ -50,7 +50,8 @@
   # @see https://www.nerdfonts.com/cheat-sheet
   # @execute command. you can check color palette.
   # $ for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
-  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ufa47'
+  #typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ufa47'
+  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue73a'
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
 
   # Basic style options that define the overall prompt look.
