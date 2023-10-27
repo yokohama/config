@@ -44,9 +44,14 @@ bindkey "jj" vi-cmd-mode
 
 # alias
 alias pwgen='openssl rand -base64 15'
-alias memo="vim ~/Desktop/`date "+%Y-%m-%d_%H-%M-%S"`.txt"
+alias history='history -t "%F %T"'
 alias vi='nvim'
 alias vim='nvim'
+
+#memoコマンド定義
+MEMO_DIR=~/Documents/memo
+memo() { vim ${MEMO_DIR}/"$(date "+%Y-%m-%d_%H-%M-%S")".txt }
+alias memos="ls -l ${MEMO_DIR}"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

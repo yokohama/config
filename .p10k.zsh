@@ -25,7 +25,7 @@
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    context                   # user@host
+    #context                   # user@host
     os_icon                   # os identifier
     dir                       # current directory
     vcs                       # git status
@@ -39,10 +39,10 @@
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    command_execution_time    # previous command duration
+    #command_execution_time    # previous command duration
     rbenv                     # rbenv
     pyenv                     # pyenv
-    time                      # current time
+    #time                      # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
   )
@@ -130,7 +130,8 @@
   # Don't show remote branch, current tag or stashes.
   typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # Don't show the branch icon.
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
+  #typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=%B$'\ue709'
+  
   # When in detached HEAD state, show @commit where branch normally goes.
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
   # Don't show staged, unstaged, untracked indicators.
