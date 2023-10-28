@@ -57,7 +57,7 @@
     typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
   fi
   ## for ThinkPad
-  if [ "$HOST" = 'thnkpad' ]; then
+  if [ "$HOST" = 'thinkpad' ]; then
     typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue62a'
     typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=027
   fi
