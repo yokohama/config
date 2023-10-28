@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH=$HOME/.oh-my-zsh
 export LANG=en_US.UTF-8
 
@@ -6,7 +13,7 @@ plugins=(git)
 # before install powerlevel10k.
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ZSH_THEME="powerlevel10k/powerlevel10k"
-source .p10k.zsh
+source ~/.p10k.zsh
 
 autoload -U compinit && compinit -u
 
@@ -50,7 +57,7 @@ alias vim='nvim'
 
 #memoコマンド定義
 MEMO_DIR=~/Documents/memo
-memo() { vim ${MEMO_DIR}/"$(date "+%Y-%m-%d_%H-%M-%S")".txt }
+alias memo=~/scripts/memo_launcher.sh
 alias memos="ls -l ${MEMO_DIR}"
 
 # pyenv
@@ -77,3 +84,6 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # golang
 export GOPATH=$HOME/go
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
