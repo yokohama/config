@@ -52,12 +52,15 @@
   # $ for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
   #
   ## for Ubuntu
-  #typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue73a'
-  #typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
-  #
-  ## for Lenovo
-  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue62a'
-  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=027
+  if [ "$HOST" = 'sun' ]; then
+    typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue73a'
+    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
+  fi
+  ## for ThinkPad
+  if [ "$HOST" = 'thnkpad' ]; then
+    typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue62a'
+    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=027
+  fi
 
   # pyenv
   typeset -g POWERLEVEL9K_PYENV_FOREGROUND=37
