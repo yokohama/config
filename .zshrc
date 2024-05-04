@@ -14,30 +14,16 @@ plugins=(git)
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ZSH_THEME="powerlevel10k/powerlevel10k"
 source ~/.p10k.zsh
+source $ZSH/oh-my-zsh.sh
 
 autoload -U compinit && compinit -u
 
-export PATH="$HOME/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/Cellar/openssl@1.1/1.1.1g/bin/:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/Cellar/mysql@5.7/5.7.29/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 export PATH="/opt/google/chrome:$PATH"
-export PATH=$PATH:./node_modules/.bin
+export PATH="$HOME/bin:$PATH"
 
-source $ZSH/oh-my-zsh.sh
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
-
-# 色を使用出来るようにする
-# autoload -Uz colors
-# colors
+export EDITOR='vim'
 
 setopt share_history                                # 同時に起動したzshの間でヒストリを共有する
 setopt hist_ignore_dups                             # 直前と同じコマンドの場合は履歴に追加しない
@@ -51,14 +37,8 @@ bindkey "jj" vi-cmd-mode
 
 # alias
 alias pwgen='openssl rand -base64 15'
-alias history='history -t "%F %T"'
-alias vi='nvim'
-alias vim='nvim'
-
-#memoコマンド定義
-MEMO_DIR=~/Documents/memo
-alias memo=~/scripts/memo_launcher.sh
-alias memos="ls -l ${MEMO_DIR}"
+alias vi="nvim"
+alias vim="nvim"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -66,24 +46,18 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-export PATH="$HOME/.local/bin:$PATH"
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
-
-# Android SDK
-export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # golang
 export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# C++
+export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
