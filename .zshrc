@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export ZSH=$HOME/.oh-my-zsh
-export LANG=en_US.UTF-8
+export LANG=ja_JP.UTF-8
 
 plugins=(git)
 
