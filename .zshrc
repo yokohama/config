@@ -68,3 +68,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Google Cloud SDK.
 if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Java update-alternative
+source ~/java_home.sh
