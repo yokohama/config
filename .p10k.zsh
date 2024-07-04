@@ -57,8 +57,8 @@
     typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202
   fi
   ## for ThinkPad
-  if [ "$HOST" = 'thinkpad' ]; then
-    typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\ue62a'
+  if [ "$HOST" = 'kali-thinkpad' ]; then
+    typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=%B$'\uF303'
     typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=027
   fi
 
